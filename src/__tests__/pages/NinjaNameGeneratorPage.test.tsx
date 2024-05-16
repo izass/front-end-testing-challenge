@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getByRole, render, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { NinjaNameGeneratorPage } from "../../pages/NinjaNameGeneratorPage";
 
@@ -12,17 +12,13 @@ describe("NinjaNameGeneratorPage", () => {
   describe("When component is rendered", () => {
     it("Renders form empty", () => {
       setup();
-      const cardNumberInput = screen.getByTitle("Card Number");
-      const verificationValueInput = screen.getByTitle(
-        "Card Verification Value"
-      );
-      const expirationDateInput = screen.getByRole("textbox", {
-        name: "Card Expiration Date",
-      });
+      const form = screen.getByRole("form");
 
-      expect(cardNumberInput).toHaveValue("");
-      expect(verificationValueInput).toHaveValue("");
-      expect(expirationDateInput).toHaveValue("");
+      expect(form).toHaveFormValues({
+        cardNumber: "",
+        cardVerificationValue: "",
+        cardExpirationDate: "",
+      });
     });
 
     it("Generate button starts disabled", () => {
@@ -62,9 +58,9 @@ describe("NinjaNameGeneratorPage", () => {
           const form = screen.getByRole("form");
 
           expect(form).toHaveFormValues({
-            cardNumber: '',
-            cardVerificationValue: '',
-            cardExpirationDate: '',
+            cardNumber: "",
+            cardVerificationValue: "",
+            cardExpirationDate: "",
           });
         });
       });
