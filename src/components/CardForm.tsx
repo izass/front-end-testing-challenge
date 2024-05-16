@@ -20,7 +20,12 @@ export const CardForm: FC<CardFormProps> = ({ onSubmit }) => {
   } = useCardForm();
 
   return (
-    <Form name="ninjaNameForm" autoComplete="off" style={{ width: "420px" }}>
+    <Form
+      name="ninjaNameForm"
+      autoComplete="off"
+      style={{ width: "420px" }}
+      aria-label="form"
+    >
       <Form.Item>
         <Input
           name="cardNumber"
